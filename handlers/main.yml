@@ -2,5 +2,11 @@
 - name: stop iptables
   service: name=iptables state=stopped
 
+- name: start firewalld
+  service: name=firewalld state=started
+
+- name: restart firewalld
+  service: name=firewalld state=restarted
+
 - name: restart fail2ban
   service: name=fail2ban state=restarted

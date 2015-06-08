@@ -2,3 +2,11 @@
 - name: install firewalld
   yum: name=firewalld state=present
   tags: firewall
+  notify:
+    - start firewalld
+  tags: firewall, firewalld
+
+- name: configure firewalld ports
+  firewalld: port={{ item }}/tcp permanent=true state=disabled
+  with_items: {{ firewall_open_ports }}
+  tags: fireall, firewalld
