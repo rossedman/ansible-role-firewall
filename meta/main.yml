@@ -6,6 +6,9 @@ galaxy_info:
   license: "license (BSD, MIT)"
   min_ansible_version: 1.9
   platforms:
+  - name: CentOS
+    versions:
+    - "7.0"
   - name: Ubuntu
     versions:
     - precise

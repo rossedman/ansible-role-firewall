@@ -1,12 +1,17 @@
 ---
-- name: install firewalld
-  yum: name=firewalld state=present
-  tags: firewall
-  notify:
-    - start firewalld
+- name: start firewalld
+  service: name=firewalld state=started
   tags: firewall, firewalld
 
 - name: configure firewalld ports
   firewalld: port={{ item }}/tcp permanent=true state=disabled
-  with_items: {{ firewall_open_ports }}
+  with_items: "{{ firewall_open_ports }}"
   tags: fireall, firewalld
+
+- name: add EPEL release
+  yum: name=epel-release state=present update_cache=yes
+  tags: firewall, fail2ban
+
+- name: install fail2ban
+  yum: name=fail2ban state=present update_cache=yes
+  tags: firewall, fail2ban
