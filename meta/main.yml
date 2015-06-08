@@ -1,0 +1,23 @@
+---
+dependencies: []
+galaxy_info:
+  author: rossedman
+  description:
+  Some suggested licenses:
+    - MIT
+  license: license (GPLv2, CC-BY, etc)
+  min_ansible_version: 1.9
+  platforms:
+  - name: Ubuntu
+    versions:
+    - precise
+    - trusty
+    - utopic
+    - vivid
+  - name: Debian
+    versions:
+    - jessie
+    - wheezy
+  categories:
+    - networking
+    - system

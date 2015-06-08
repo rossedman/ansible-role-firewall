@@ -1,0 +1,4 @@
+---
+- name: install firewalld
+  yum: name=firewalld state=present
+  tags: firewall

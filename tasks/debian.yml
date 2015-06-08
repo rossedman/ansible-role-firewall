@@ -1,0 +1,20 @@
+---
+- name: install uncomplicated firewall
+  apt: name=ufw state=present
+  tags: firewall
+
+- name: install fail2ban
+  apt: name=fail2ban state=present
+  tags: firewall
+
+- name: set uncomplicated firewall policy
+  ufw: state=enabled policy=deny
+  tags: firewall
+
+- name: open ssh port
+  ufw: rule=limit port=ssh proto=tcp
+  tags: firewall
+
+- name: open ports on firewall
+  ufw: rule=allow port={{ item }} proto=tcp
+  with_items: "{{ firewall_open_ports }}"
