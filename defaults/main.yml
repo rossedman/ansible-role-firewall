@@ -6,7 +6,7 @@ firewall_bantime: "600"
 firewall_maxretry: "3"
 firewall_jail:
   ssh: true
-  ssh-ddos: false
+  ssh_ddos: false
   apache: false
-  php-url: false
-  nginx-http: false
+  php_url: false
+  nginx_http: false

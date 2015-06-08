@@ -1,6 +1,6 @@
 ---
 - name: stop iptables
-  service: name=iptables status=stopped
+  service: name=iptables state=stopped
 
 - name: restart fail2ban
-  service: name=fail2ban status=restarted
+  service: name=fail2ban state=restarted

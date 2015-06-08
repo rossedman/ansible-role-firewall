@@ -18,7 +18,7 @@
 # "ignoreip" can be an IP address, a CIDR mask or a DNS host. Fail2ban will not
 # ban a host which matches an address in this list. Several addresses can be
 # defined using space separator.
-ignoreip = {% for ip in firewall_whitelist_ips %}"{{ip}} "{% endfor %}
+ignoreip = {% for ip in firewall_whitelist_ips %}{{ip}} {% endfor %}
 
 # "bantime" is the number of seconds that a host is banned.
 bantime  = {{ firewall_bantime }}
@@ -143,7 +143,7 @@ maxretry  = 2
 
 [ssh-ddos]
 
-enabled  = {{ firewall_jail.ssh-ddos }}
+enabled  = {{ firewall_jail.ssh_ddos }}
 port     = ssh
 filter   = sshd-ddos
 logpath  = /var/log/auth.log
@@ -229,7 +229,7 @@ maxretry = 2
 
 [php-url-fopen]
 
-enabled = {{ firewall_jail.php-url }}
+enabled = {{ firewall_jail.php_url }}
 port    = http,https
 filter  = php-url-fopen
 logpath = /var/www/*/logs/access_log
@@ -259,7 +259,7 @@ logpath = /var/log/lighttpd/error.log
 
 [nginx-http-auth]
 
-enabled = {{ firewall_jail.nginx-http }}
+enabled = {{ firewall_jail.nginx_http }}
 filter  = nginx-http-auth
 port    = http,https
 logpath = /var/log/nginx/error.log

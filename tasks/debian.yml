@@ -14,10 +14,14 @@
 - name: open ports on firewall
   ufw: rule=allow port={{ item }} proto=tcp
   with_items: "{{ firewall_open_ports }}"
+  tags: firewall
 
 - name: install fail2ban
   apt: name=fail2ban state=present update_cache=yes
-  tags: firewall
+  tags: firewall, fail2ban
 
 - name: configure fail2ban
   template: src=jail.local dest=/etc/fail2ban/jail.local owner=root group=root
+  tags: firewall, fail2ban
+  notify:
+    - restart fail2ban
