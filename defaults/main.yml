@@ -1,5 +1,12 @@
 ---
-firewall_open_ports:
-  - "22"
-  - "80"
-  - "443"
+firewall_open_ports: ["22", "80", "443"]
+firewall_whitelist_ips:
+  - "127.0.0.1/8"
+firewall_bantime: "600"
+firewall_maxretry: "3"
+firewall_jail:
+  ssh: true
+  ssh-ddos: false
+  apache: false
+  php-url: false
+  nginx-http: false

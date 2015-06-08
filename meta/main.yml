@@ -2,10 +2,8 @@
 dependencies: []
 galaxy_info:
   author: rossedman
-  description:
-  Some suggested licenses:
-    - MIT
-  license: license (GPLv2, CC-BY, etc)
+  description: Firewall setup for Debian/Ubuntu and CentOS
+  license: "license (BSD, MIT)"
   min_ansible_version: 1.9
   platforms:
   - name: Ubuntu
