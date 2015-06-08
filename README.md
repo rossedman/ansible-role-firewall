@@ -1,5 +1,7 @@
-Role Name
+Ansible Firewall Role
 =========
+
+[![Build Status](https://travis-ci.org/rossedman/ansible-role-firewall.svg?branch=master)](https://travis-ci.org/rossedman/ansible-role-firewall)
 
 A brief description of the role goes here.
 
