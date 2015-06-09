@@ -7,14 +7,6 @@
   ufw: state=enabled policy=deny
   tags: firewall
 
-# - name: check if ssh is open
-#   sudo: yes
-#   shell: ufw status | grep -ci "22/tcp.*ALLOW"
-#   register: ssh_is_open
-#   ignore_errors: True
-#   changed_when: False
-#   tags: firewall
-
 - name: open ssh port
   ufw: rule=limit port=ssh proto=tcp state=reloaded
   tags: firewall
