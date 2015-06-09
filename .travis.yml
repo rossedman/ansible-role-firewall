@@ -29,3 +29,10 @@ script:
     | grep -q 'changed=0.*failed=0'
     && (echo 'Idempotence test: pass' && exit 0)
     || (echo 'Idempotence test: fail' && exit 1)
+
+  # Check if port 666 is open \m/ METAL4LYFE
+  - >
+    sudo ufw status
+    | grep -q "666/tcp.*ALLOW"
+    && (echo "Port 666 is open \m/" && exit 0)
+    || (echo "Port 666 is closed ;^(" && exit 1)

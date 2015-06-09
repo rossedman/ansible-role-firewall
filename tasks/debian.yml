@@ -7,14 +7,33 @@
   ufw: state=enabled policy=deny
   tags: firewall
 
+- name: check if ssh is open
+  sudo: yes
+  shell: ufw status | grep -ci "22/tcp.*ALLOW"
+  register: ssh_is_open
+  ignore_errors: True
+  changed_when: False
+  tags: firewall
+
 - name: open ssh port
-  ufw: rule=limit port=ssh proto=tcp
+  ufw: rule=limit port=ssh proto=tcp state=reloaded
+  tags: firewall
+  when: ssh_is_open == 0
+
+- name: check if other ports are open
+  sudo: yes
+  shell: ufw status | grep -ci "{{ item }}/tcp.*ALLOW"
+  with_items: "{{ firewall_open_ports }}"
+  register: ports_open
+  ignore_errors: True
+  changed_when: False
   tags: firewall
 
 - name: open ports on firewall
-  ufw: rule=allow port={{ item }} proto=tcp
+  ufw: rule=allow port={{ item }} proto=tcp state=reloaded
   with_items: "{{ firewall_open_ports }}"
   tags: firewall
+  when: ports_open == 0
 
 - name: install fail2ban
   apt: name=fail2ban state=present update_cache=yes

@@ -2,4 +2,4 @@
 - hosts: localhost
   remote_user: root
   roles:
-    - ansible-role-firewall
+    - {role: ansible-role-firewall, firewall_open_ports: ["666"]}
