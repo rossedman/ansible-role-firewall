@@ -15,3 +15,9 @@
 - name: install fail2ban
   yum: name=fail2ban state=present update_cache=yes
   tags: firewall, fail2ban
+
+- name: configure fail2ban
+  template: src=jail.local dest=/etc/fail2ban/jail.local owner=root group=root
+  tags: firewall, fail2ban
+  notify:
+    - start fail2ban  

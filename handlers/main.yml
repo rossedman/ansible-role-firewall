@@ -10,3 +10,6 @@
 
 - name: restart fail2ban
   service: name=fail2ban state=restarted
+
+- name: start fail2ban
+  service: name=fail2ban state=started
